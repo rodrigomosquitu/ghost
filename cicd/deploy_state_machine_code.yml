@@ -1,0 +1,18 @@
+version: 0.1
+
+phases:
+
+  pre_build:
+    commands:
+      - mkdir -p ./lambda_code/zipped
+      - zip -r -j lambda_code/zipped/lambda-function-payload.zip lambda_code/*
+
+  build:
+    commands:
+      - aws s3 sync ./lambda_code/zipped s3://YOUR-BUCKET-NAME/YOUR-S3-KEY --delete
+
+      - aws lambda update-function-code --function-name YOUR-FUNCTION-NAME --s3-bucket YOUR-BUCKET-NAME --s3-key YOUR-S3-KEY-TO-FILE
+
+  post_build:
+    commands:
+      - echo state_machine_code was deployed to lambda from S3 bucket on `date`
