@@ -4,6 +4,7 @@ phases:
     commands:
       - "apt install unzip -y"
       - "wget https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_amd64.zip"
+      - "ls -l"
       - "unzip terraform_0.14.10_linux_amd64.zip"
       - "mv terraform /usr/local/bin/"
   pre_build:
