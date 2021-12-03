@@ -10,8 +10,8 @@ phases:
       - "cd terraform_install"
       - "pwd"
       - "ls -l"
-      - "unzip terraform_0.14.10_linux_amd64.zip"
-      - "mv terraform /usr/local/bin/"
+      - "unzip terraform_0.14.10_linux_amd64.zip -d terraform_install"
+      - "mv terraform_install/terraform /usr/local/bin/"
   pre_build:
     commands:
       - terraform -chdir=Terraform init -input=false
