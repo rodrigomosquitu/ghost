@@ -3,9 +3,6 @@ phases:
   install:
     commands:
       - "export TF_LOG=DEBUG terraform apply"
-      - "export AWS_ACCESS_KEY_ID=AKIATP75CTMU6C4MSZ2F"
-      - "export AWS_SECRET_ACCESS_KEY=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"
-      - "export AWS_DEFAULT_REGION=us-east-1"
       - "pwd"
       - "ls -l"
       - "apt install unzip -y"
@@ -24,4 +21,4 @@ phases:
       - terraform -chdir=terraform $TF_COMMAND_P -input=false -no-color
   post_build:
     commands:
-      - echo terraform $TF_COMMAND_P completed on `date`
+      - terraform -chdir=terraform $TF_COMMAND_A -input=false -no-color
