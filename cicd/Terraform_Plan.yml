@@ -21,4 +21,4 @@ phases:
       - terraform -chdir=terraform $TF_COMMAND_P -input=false -no-color
   post_build:
     commands:
-      - terraform -chdir=terraform $TF_COMMAND_A -input=false -no-color
+      - terraform -chdir=terraform $TF_COMMAND_A -auto-approve -input=false -no-color
