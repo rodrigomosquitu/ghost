@@ -4,7 +4,7 @@ terraform {
     bucket  = "nord-cloud-penguin"
     region  = "us-east-1"
     key     = "tfstate/terraform.tfstate"
-    access_key = "AKIATP75CTMU3ZDQQXVN"
-    secret_key = "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"
+    access_key = "xxxxxxxxxxxx"
+    secret_key = "xxxxxxxxxxxxxxxx"
   }
 }
