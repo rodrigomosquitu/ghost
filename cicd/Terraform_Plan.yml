@@ -14,10 +14,10 @@ phases:
       - "mv terraform_install/terraform /usr/local/bin/"
   pre_build:
     commands:
-      - terraform -chdir=Terraform init -input=false
+      - terraform -chdir=terraform init -input=false
   build:
     commands:
-      - terraform -chdir=Terraform $TF_COMMAND_P -input=false -no-color
+      - terraform -chdir=terraform $TF_COMMAND_P -input=false -no-color
   post_build:
     commands:
       - echo terraform $TF_COMMAND_P completed on `date`
