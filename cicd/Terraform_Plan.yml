@@ -2,6 +2,7 @@ version: 0.1
 phases:
   install:
     commands:
+      - "export TF_LOG=DEBUG terraform apply"
       - "export AWS_ACCESS_KEY_ID=AKIATP75CTMU6C4MSZ2F"
       - "export AWS_SECRET_ACCESS_KEY=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"
       - "export AWS_DEFAULT_REGION=us-east-1"
