@@ -1,5 +1,5 @@
 data "aws_route53_zone" "selected" {
-  name         = "rodmosq.link."
+  name         = var.r53_zone_name
   private_zone = false
 }
 
@@ -7,7 +7,7 @@ resource "aws_route53_record" "tfer--Z043236731QLLZZ8SU1HU_rodmosq-002E-link-002
   alias {
     evaluate_target_health = "false"
     name                   = aws_lb.ghost_alb.dns_name
-    zone_id                = "Z35SXDOTRQ7X7K"
+    zone_id                = var.r53_zone_id
   }
 
   name    = "rodmosq.link"
@@ -19,7 +19,7 @@ resource "aws_route53_record" "tfer--Z043236731QLLZZ8SU1HU_www-002E-rodmosq-002E
   alias {
     evaluate_target_health = "false"
     name                   = aws_lb.ghost_alb.dns_name
-    zone_id                = "Z35SXDOTRQ7X7K"
+    zone_id                = var.r53_zone_id
   }
 
   name    = "www.rodmosq.link"

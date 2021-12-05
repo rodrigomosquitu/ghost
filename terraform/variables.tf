@@ -78,12 +78,6 @@ variable "mysql_username" {
   default     = "admin"
 }
 
-variable "mysql_password" {
-  description = "MySQL password"
-  type        = string
-  default     = "Mypass123!"
-}
-
 variable "mysql_parameter_group_name" {
   description = "Mysql parameter group name"
   type        = string
@@ -126,4 +120,37 @@ variable "website_admin_url" {
   description = "Your ghost website admin URL, has to match the origin (custom domain OR load balancer DNS Name). Can be a subdomain of website_url"
   type        = string
   default     = ""
+}
+
+/*--------------------------------------------------------------------------------------------------
+  ALB vars
+--------------------------------------------------------------------------------------------------*/
+
+variable "alb_ssl_policy" {
+  description = "Name of the SSL Policy for the listener"
+  type        = string
+  default     = "ELBSecurityPolicy-2016-08"
+}
+
+variable "alb_certificate_arn" {
+  description = "ARN of the default SSL server certificate"
+  type        = string
+  default     = "arn:aws:acm:us-east-1:240512047913:certificate/498dfdaa-b389-4fa5-85ab-3dd374a1a705"
+}
+
+/*--------------------------------------------------------------------------------------------------
+  ROUTE53 vars
+--------------------------------------------------------------------------------------------------*/
+
+variable "r53_zone_name" {
+  description = "This is the name of the hosted zone"
+  type        = string
+  default     = "rodmosq.link."
+}
+
+
+variable "r53_zone_id" {
+  description = "The ID of the hosted zone to contain this record."
+  type        = string
+  default     = "Z35SXDOTRQ7X7K"
 }

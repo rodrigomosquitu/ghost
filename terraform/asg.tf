@@ -29,7 +29,7 @@ resource "aws_launch_configuration" "ghost_lc" {
       "database" = aws_db_instance.default.name,
       "username" = aws_db_instance.default.username,
       # !!! Remember to find a secure way to retrieve your password
-      "password"  = var.mysql_password,
+      "password"  = data.aws_ssm_parameter.mysql_password.value,
       "admin_url" = var.website_admin_url,
       "url"       = var.website_url
     }

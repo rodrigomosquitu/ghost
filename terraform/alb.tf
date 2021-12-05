@@ -55,8 +55,8 @@ resource "aws_lb_listener" "ghost_lb_listener_https" {
     type             = "forward"
   }
 
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:acm:us-east-1:240512047913:certificate/498dfdaa-b389-4fa5-85ab-3dd374a1a705"
+  ssl_policy        = var.alb_ssl_policy
+  certificate_arn   = var.alb_certificate_arn
 }
 
 //================================================================================

@@ -34,9 +34,6 @@ exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
     # Then navigate into it
     cd /var/www/blog
 
-    ################################################################
-
-
     # Install Ghost, cannot be run via root (user data default)
     sudo -u ubuntu ghost install \
         --url "${url}" \
@@ -49,11 +46,13 @@ exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
         --no-prompt \
         --no-setup-ssl
     
+    # Wait until Nginx file exists 
     until [ -f /etc/nginx/sites-available/www.rodmosq.link.conf ]
     do
          sleep 5
     done
 
+    # Tells nginx to pass (header when proxying request) name of the upstream server instead of Load balancer
     sudo cat <<-EOF > /etc/nginx/sites-available/www.rodmosq.link.conf
    server {
    listen 80;

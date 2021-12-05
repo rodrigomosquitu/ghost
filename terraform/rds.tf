@@ -1,3 +1,7 @@
+data "aws_ssm_parameter" "mysql_password" {
+  name = "ghostdbpw"
+}
+
 resource "aws_db_instance" "default" {
   allocated_storage      = 20
   storage_type           = "gp2"
@@ -6,7 +10,7 @@ resource "aws_db_instance" "default" {
   instance_class         = var.mysql_instance_class
   name                   = var.mysql_name
   username               = var.mysql_username
-  password               = var.mysql_password
+  password               = data.aws_ssm_parameter.mysql_password.value
   db_subnet_group_name   = aws_db_subnet_group.mysql_subnet_group.name
   parameter_group_name   = var.mysql_parameter_group_name
   vpc_security_group_ids = [aws_security_group.mysql_sg.id]
